@@ -1,8 +1,8 @@
 import os
 import pandas as pd
-import pandasai as pai
-from pandasai.llm.base import LLM
-from pandasai.core.prompts.base import BasePrompt
+import dataai as dai
+from dataai.llm.base import LLM
+from dataai.core.prompts.base import BasePrompt
 
 # Get API configuration
 api_key = os.environ.get("OPENAI_API_KEY")
@@ -40,7 +40,7 @@ class OpenRouterLLM(LLM):
 llm = OpenRouterLLM(api_key=api_key, api_base=api_base)
 print(f"LLM Type: {type(llm).__name__}\n")
 
-pai.config.set({"llm": llm})
+dai.config.set({"llm": llm})
 
 # Create DataFrame
 df = pd.DataFrame({
@@ -48,7 +48,7 @@ df = pd.DataFrame({
     "revenue": [5000, 3200, 2900, 4100, 2300]
 })
 
-smart_df = pai.DataFrame(df)
+smart_df = dai.DataFrame(df)
 
 print("=" * 60)
 print("DataFrame created successfully!")
