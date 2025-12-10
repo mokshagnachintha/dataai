@@ -9,7 +9,6 @@ from dataai.config import Config, ConfigManager
 from dataai.constants import DEFAULT_CHART_DIRECTORY
 from dataai.exceptions import InvalidConfigError
 from dataai.helpers.folder import Folder
-from dataai.helpers.logger import Logger
 from dataai.helpers.memory import Memory
 
 if TYPE_CHECKING:
@@ -27,7 +26,6 @@ class AgentState:
     _config: Union[Config, dict] = field(default_factory=dict)
     memory: Memory = field(default_factory=Memory)
     intermediate_values: Dict[str, Any] = field(default_factory=dict)
-    logger: Optional[Logger] = None
     last_code_generated: Optional[str] = None
     last_code_executed: Optional[str] = None
     last_prompt_id: str = None

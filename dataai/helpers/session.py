@@ -1,6 +1,5 @@
 """Request helper module."""
 
-import logging
 import os
 import traceback
 from typing import Optional
@@ -11,7 +10,6 @@ import requests
 from dataai.constants import DEFAULT_API_URL
 from dataai.exceptions import PandasAIApiCallError, PandasAIApiKeyError
 from dataai.helpers import load_dotenv
-from dataai.helpers.logger import Logger
 
 load_dotenv()
 
@@ -19,13 +17,11 @@ load_dotenv()
 class Session:
     _api_key: str
     _endpoint_url: str
-    _logger: Logger
 
     def __init__(
         self,
         endpoint_url: Optional[str] = None,
         api_key: Optional[str] = None,
-        logger: Optional[Logger] = None,
     ) -> None:
         if api_key is None:
             api_key = os.environ.get("PANDABI_API_KEY") or None
@@ -38,7 +34,6 @@ class Session:
 
         self._endpoint_url = endpoint_url
         self._version_path = "/api"
-        self._logger = logger or Logger()
 
     def get(self, path=None, **kwargs):
         return self.make_request("GET", path, **kwargs)

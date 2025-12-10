@@ -82,18 +82,6 @@ class SmartDatalake:
         return self._agent.last_prompt_id
 
     @property
-    def logs(self):
-        return self._agent.logger.logs
-
-    @property
-    def logger(self):
-        return self._agent.logger
-
-    @logger.setter
-    def logger(self, logger):
-        self._agent.logger = logger
-
-    @property
     def config(self):
         return self._agent.context.config
 

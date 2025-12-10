@@ -10,7 +10,7 @@ from dataai.agent import Agent
 from dataai.dataframe.base import DataFrame
 
 from ..config import Config
-from ..helpers.logger import Logger
+
 
 
 class SmartDataframe:
@@ -116,14 +116,6 @@ class SmartDataframe:
 
     def original_import(self):
         return self._original_import
-
-    @property
-    def logger(self):
-        return self._agent.logger
-
-    @logger.setter
-    def logger(self, logger: Logger):
-        self._agent.logger = logger
 
     @property
     def logs(self):
